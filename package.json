@@ -1,0 +1,48 @@
+{
+  "name": "tone-field",
+  "productName": "Tone field",
+  "version": "0.1.0",
+  "description": "A web audio experiment",
+  "author": "Scott Thiessen (http://movingobjects.io)",
+  "license": "ISC",
+  "homepage": "https://github.com/movingobjects/tone-field#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/movingobjects/tone-field.git"
+  },
+  "bugs": {
+    "url": "https://github.com/movingobjects/tone-field/issues"
+  },
+  "engines": {
+    "node": ">=8",
+    "npm": ">=5"
+  },
+  "main": "app/src/entry.js",
+  "scripts": {
+    "dev": "webpack-dev-server --open --hot --mode development",
+    "dist": "rm -rf ./app/dist; webpack --mode production"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0-rc.1",
+    "@babel/plugin-proposal-class-properties": "^7.0.0-rc.1",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0-rc.1",
+    "@babel/preset-env": "^7.0.0-rc.1",
+    "babel-loader": "^8.0.0-beta",
+    "copy-webpack-plugin": "^4.5.2",
+    "css-loader": "^1.0.0",
+    "file-loader": "^1.1.11",
+    "html-loader": "^0.5.5",
+    "mini-css-extract-plugin": "^0.4.1",
+    "node-sass": "^4.9.3",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.22.1",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.5",
+    "webpack": "^4.16.5"
+  },
+  "dependencies": {
+    "html-webpack-plugin": "^3.2.0",
+    "lodash": "^4.17.10",
+    "varyd-utils": "^1.5.2"
+  }
+}

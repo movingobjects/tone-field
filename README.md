@@ -1,1 +1,3 @@
-# tone-field
+# Tone field
+
+A web audio experiment
