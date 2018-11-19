@@ -69,7 +69,8 @@ const NOTES = {
   'F8': 5587.65, 'F#8': 5919.91, 'Gb8': 5919.91,
   'G8': 6271.93, 'G#8': 6644.88, 'Ab8': 6644.88,
   'A8': 7040.00, 'A#8': 7458.62, 'Bb8': 7458.62,
-  'B8': 7902.13
+  'B8': 7902.13,
+
 };
 
 // Class
@@ -78,7 +79,7 @@ export default class Tone {
 
   constructor(context) {
 
-    this.gain = 0.1;
+    this.gain = 0.05;
 
     this.context = context;
     this.reset();

@@ -4952,6 +4952,11 @@ signal-exit@^3.0.0:
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.2.tgz#b5fdc08f1287ea1178628e415e25132b73646c6d"
   integrity sha1-tf3AjxKH6hF4Yo5BXiUTK3NkbG0=
 
+simplex-noise@^2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/simplex-noise/-/simplex-noise-2.4.0.tgz#81b3458fb22dccc3bc8dd9a977c73797f86f523a"
+  integrity sha512-OjyDWm/QZjVbMrPxDVi9b2as+SeNn9EBXlrWVRlFW+TSyWMSXouDryXkQN0vf5YP+QZKobrmkvx1eQYPLtuqfw==
+
 slash@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/slash/-/slash-1.0.0.tgz#c41f2f6c39fc16d1cd17ad4b5d896114ae470d55"
@@ -5614,10 +5619,10 @@ vary@~1.1.2:
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
   integrity sha1-IpnwLG3tMNSllhsLn3RSShj2NPw=
 
-varyd-utils@^1.5.2:
-  version "1.5.2"
-  resolved "https://registry.yarnpkg.com/varyd-utils/-/varyd-utils-1.5.2.tgz#abfa095d7868c3d32d6f490f2c0162cdc058ed16"
-  integrity sha512-XhaDbyLRWY5kRv0kJIkr+H7wqSsChmX+Jho0Z4n1xSmV7W+4VIQocRBFqH50I0iLHD+HY6Cm7CK/RFgmpp913w==
+varyd-utils@1.5.4:
+  version "1.5.4"
+  resolved "https://registry.yarnpkg.com/varyd-utils/-/varyd-utils-1.5.4.tgz#def1364be5a17718ef50c72b3d8bfd652fce1f6a"
+  integrity sha512-geLE55z85zlwCZdWe6OwURgCr5tDjPN8lkXRVxIv54EUomrzSHrbB7QFMR93t8T2Oj/HQmDSxfHyoM9qpDfdng==
 
 verror@1.10.0:
   version "1.10.0"
