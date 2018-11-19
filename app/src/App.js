@@ -10,8 +10,6 @@ import FlowField from './FlowField';
 
 // Constants
 
-const CANVAS_ID = 'app';
-
 const COLS = 13,
       ROWS = 6;
 
@@ -24,11 +22,19 @@ export default class App {
 
   constructor() {
 
-    this.canvas      = document.getElementById(CANVAS_ID);
-    this.ctx         = this.canvas.getContext('2d');
+    App.W = 1000;
+    App.H = 500;
 
-    window.addEventListener('resize', this.onWindowResize);
-    this.onWindowResize();
+    const canvasField         = document.getElementById('canvas-field');
+          canvasField.width   = App.W;
+          canvasField.height  = App.H;
+
+    const canvasAgents        = document.getElementById('canvas-agents');
+          canvasAgents.width  = App.W;
+          canvasAgents.height = App.H;
+
+    this.ctxField    = canvasField.getContext('2d');
+    this.ctxAgents   = canvasAgents.getContext('2d');
 
     this.flowField   = new FlowField(COLS, ROWS);
     this.toneManager = new ToneManager(COLS, ROWS);
@@ -43,21 +49,13 @@ export default class App {
 
   // Event handlers
 
-  onWindowResize = (e) => {
-
-    App.W = window.innerWidth;
-    App.H = window.innerHeight;
-
-    this.canvas.width  = App.W;
-    this.canvas.height = App.H;
-
-  }
-
   nextFrame = (timeNow) => {
 
     this.flowField.nextFrame(timeNow);
 
-    this.redraw();
+    this.redrawField();
+    this.redrawAgents();
+
     this.playAgentNotes();
 
     window.requestAnimationFrame(this.nextFrame);
@@ -73,25 +71,26 @@ export default class App {
 
   }
 
-  redraw() {
+  redrawField() {
 
     const colX = (col) => Math.floor(col * (App.W / COLS)),
           rowY = (row) => Math.floor(row * (App.H / ROWS));
 
-    this.ctx.clearRect(0, 0, App.W, App.H);
+    const ctx = this.ctxField;
+          ctx.clearRect(0, 0, App.W, App.H);
 
     _.times(COLS - 1, (col) => {
 
       let x = colX(col + 1) + 0.5;
 
-      this.ctx.beginPath();
-      this.ctx.moveTo(x, 0);
-      this.ctx.lineTo(x, App.H);
-      this.ctx.closePath();
+      ctx.beginPath();
+      ctx.moveTo(x, 0);
+      ctx.lineTo(x, App.H);
+      ctx.closePath();
 
-      this.ctx.strokeStyle = '#ddd';
-      this.ctx.lineWidth   = 1;
-      this.ctx.stroke();
+      ctx.strokeStyle = '#ddd';
+      ctx.lineWidth   = 1;
+      ctx.stroke();
 
     });
 
@@ -99,14 +98,14 @@ export default class App {
 
       let y = rowY(row + 1) + 0.5;
 
-      this.ctx.beginPath();
-      this.ctx.moveTo(0, y);
-      this.ctx.lineTo(App.W, y);
+      ctx.beginPath();
+      ctx.moveTo(0, y);
+      ctx.lineTo(App.W, y);
 
-      this.ctx.closePath();
-      this.ctx.strokeStyle = '#ddd';
-      this.ctx.lineWidth   = 1;
-      this.ctx.stroke();
+      ctx.closePath();
+      ctx.strokeStyle = '#ddd';
+      ctx.lineWidth   = 1;
+      ctx.stroke();
 
     });
 
@@ -118,39 +117,46 @@ export default class App {
       let cellX = colX(col + 0.5),
           cellY = rowY(row + 0.5);
 
-      this.ctx.save();
+      ctx.save();
 
-      this.ctx.translate(cellX, cellY);
-      this.ctx.rotate(angle);
+      ctx.translate(cellX, cellY);
+      ctx.rotate(angle);
 
-      this.ctx.beginPath()
-      this.ctx.moveTo(-7, 0);
-      this.ctx.lineTo(7, 0);
+      ctx.beginPath()
+      ctx.moveTo(-7, 0);
+      ctx.lineTo(7, 0);
 
-      this.ctx.moveTo(7, 0);
-      this.ctx.lineTo(3, -2);
+      ctx.moveTo(7, 0);
+      ctx.lineTo(3, -2);
 
-      this.ctx.moveTo(7, 0);
-      this.ctx.lineTo(3, 2);
+      ctx.moveTo(7, 0);
+      ctx.lineTo(3, 2);
 
-      this.ctx.closePath();
+      ctx.closePath();
 
-      this.ctx.strokeStyle = '#666';
-      this.ctx.lineWidth   = 1;
-      this.ctx.stroke();
+      ctx.strokeStyle = '#999';
+      ctx.lineWidth   = 1;
+      ctx.stroke();
 
-      this.ctx.restore();
+      ctx.restore();
 
     });
+  }
+
+  redrawAgents() {
+
+    const ctx = this.ctxAgents;
+          ctx.fillStyle = 'rgba(255, 255, 255, 0.1)';
+          ctx.fillRect(0, 0, App.W, App.H);
 
     this.flowField.agents.forEach((agent, i) => {
 
-      this.ctx.beginPath();
-      this.ctx.arc(agent.pos.x, agent.pos.y, 3, 0, maths.TAO);
-      this.ctx.closePath();
+      ctx.beginPath();
+      ctx.arc(agent.pos.x, agent.pos.y, 2, 0, maths.TAO);
+      ctx.closePath();
 
-      this.ctx.fillStyle = 'magenta';
-      this.ctx.fill();
+      ctx.fillStyle = '#f55';
+      ctx.fill();
 
     });
 

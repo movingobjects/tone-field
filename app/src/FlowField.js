@@ -12,7 +12,7 @@ import FlowAgent from './FlowAgent';
 
 const NOISE_SCALE = 0.05,
       TIME_SCALE  = 0.0001,
-      AGENT_COUNT = 10;
+      AGENT_COUNT = 20;
 
 
 // Class

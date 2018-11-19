@@ -9,7 +9,7 @@ import { maths, arrays, Vec } from 'varyd-utils';
 import App from './App';
 
 const MAX_ACC = 0.5,
-      MAX_VEL = 8;
+      MAX_VEL = 5;
 
 
 // Class
